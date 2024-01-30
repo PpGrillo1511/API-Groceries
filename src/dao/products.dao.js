@@ -11,7 +11,13 @@ ProductDAO.getOne=async(barcode)=>{
 ProductDAO.insertOne=async(product)=>{
     return await Product.create(product);
 };
+ProductDAO.updateOne=async(barcode, product)=>{
+    return await Product.findOneAndUpdate({barcode:barcode}, product);
+};
 
+ProductDAO.deleteOne=async(barcode)=>{
+    return await Product.findOneAndDelete({barcode:barcode});
+};
 
 
 export default ProductDAO;
