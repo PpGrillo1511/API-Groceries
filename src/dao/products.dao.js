@@ -8,5 +8,8 @@ ProductDAO.getOne=async(barcode)=>{
     const products=await Product.findOne({barcode:barcode});
     return products;
 };
+ProductDAO.insertOne=async(product)=>{
+    return await Product.create(product);
+};
 
 export default ProductDAO;

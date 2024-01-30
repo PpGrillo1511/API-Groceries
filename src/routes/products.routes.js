@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getAll, getOne } from "../controllers/products.controller.js";
+import { getAll, getOne, insertOne } from "../controllers/products.controller.js";
 
 const router = Router();
 
@@ -8,5 +8,8 @@ router.get('/getAll', getAll);
 
 // Ruta para obtener un solo producto por código de barras
 router.get('/getOne/:barcode', getOne);
+
+// Ruta para insertar un producto
+router.get('/insertOne', insertOne);
 
 export default router;
