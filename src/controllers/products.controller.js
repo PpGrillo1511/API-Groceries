@@ -25,6 +25,7 @@ export const getOne = (req, res) => {
             status: "Server unavailable"
         }));
 }
+
 export const insertOne = (req, res) => {
     ProductDAO.insertOne(req.body)
         .then(result => res.json({

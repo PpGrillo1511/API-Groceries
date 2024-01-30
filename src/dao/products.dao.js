@@ -12,4 +12,6 @@ ProductDAO.insertOne=async(product)=>{
     return await Product.create(product);
 };
 
+
+
 export default ProductDAO;
