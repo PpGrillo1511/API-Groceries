@@ -1,12 +1,15 @@
 import ProductDAO from "../dao/products.dao.js";
-const productsController = {}
 
-export const getAll = (req, res) =>{
+const productsController = {};
+
+export const getAll = (req, res) => {
     ProductDAO.getAll()
-    .then(result=>res.json(result))
-    .catch(err=>res.json({
-        status:"Server unavailable"
-    }))
+        .then(products => {
+            res.render('../src/views/index.ejs', { products }); // Aquí se pasa un objeto con la propiedad 'products'
+        })
+        .catch(err => res.json({
+            status: "Server unavailable"
+        }));
 }
 
 export const getOne = (req, res) => {
