@@ -31,9 +31,7 @@ export const getOne = (req, res) => {
 
 export const insertOne = (req, res) => {
     ProductDAO.insertOne(req.body)
-        .then(result => res.json({
-            status: "Product saved"
-        }))
+        .then(result => res.redirect('/api/products/'))
         .catch(err => res.json({
             status: "Server unavailable"
         }));
