@@ -61,7 +61,7 @@ export const updateOne = (req, res) => {
     ProductDAO.updateOne(barcode, updatedProduct)
         .then(result => {
             if (result) {
-                res.redirect(`/api/products/${barcode}`); // Redirige a la página de edición
+                res.redirect(`/api/products/`); // Redirige a la página de edición
             } else {
                 res.json({
                     status: "Product not found"
@@ -78,10 +78,8 @@ export const deleteOne = (req, res) => {
     ProductDAO.deleteOne(barcode)
       .then(result => {
         if (result) {
-        res.json({
-            status: "Product deleted"
-        });
-    } else {
+        res.redirect(`/api/products/`);  
+        }else {
         res.json({
             status: "Product not found"
         });
