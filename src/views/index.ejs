@@ -48,16 +48,36 @@
 
                 <label for="flip-2">Activo</label>
                     <select name="status" id="flip-2" data-role="slider">
-                <option value="0">Off</option>
-                <option value="1">On</option>
+                <option value="0">No</option>
+                <option value="1">Si</option>
                     </select>
                     
 
                 <button type="submit" id="submit-6" class="ui-shadow ui-btn ui-corner-all ui-mini">Guardar</button>
             </form>
+            <form>
+                <input data-type="search" id="searchForCollapsibleSet">
+                </form>
+                <div data-role="collapsibleset" data-filter="true" data-inset="true" id="collapsiblesetForFilter" data-input="#searchForCollapsibleSet">
+                <% products.forEach((product)=>{ %>
+                    <div data-role="collapsible" data-filtertext="<%= product.description %>">
+                        <h3><%= product.description %></h3>
+                        <ul data-role="listview" data-inset="false">
+                        <li>Codigo de barras: <%= product.barcode %></li>
+                        <li>Descripción: <%= product.description %></li>
+                        <li>Marca: <%= product.brand %></li>
+                        <li>Precio: <%= product.price %></li>
+                        <li>Cosot: <%= product.cost %></li>
+                        <li>Stock: <%= product.stock %></li>
+                        <li>Fecha de expiración: <%= product.expiredDate %></li>
+                        <li>Estatus: <%= product.status %></li>
+                        <li><a href="/api/products/<%= product.barcode %>">Editar</a></li>    
+                        </ul>
+                        </div>
+                <% }) %>
         </div>
         <div data-role="footer">
-
+                <h5>Developed by PpGrillo</h5>
         </div>
     </div>
 </body>

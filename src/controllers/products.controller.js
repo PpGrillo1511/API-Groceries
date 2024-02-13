@@ -17,7 +17,7 @@ export const getOne = (req, res) => {
     ProductDAO.getOne(barcode)
         .then(result => {
             if (result) {
-                res.json(result);
+                res.render("../src/views/edit.ejs", { product: result });
             } else {
                 res.json({
                     status: "Product not found"
@@ -37,7 +37,7 @@ export const insertOne = (req, res) => {
         }));
 }
 
-export const updateOne = (req, res) => {
+/* export const updateOne = (req, res) => {
     const barcode = req.params.barcode;
     const product = req.body;
     ProductDAO.updateOne(barcode, product)
@@ -50,6 +50,25 @@ export const updateOne = (req, res) => {
         });
     }})
        .catch(err => res.json({
+            status: "Server unavailable"
+        }));
+} */
+
+export const updateOne = (req, res) => {
+    const barcode = req.params.barcode;
+    const updatedProduct = req.body;
+
+    ProductDAO.updateOne(barcode, updatedProduct)
+        .then(result => {
+            if (result) {
+                res.redirect(`/api/products/${barcode}`); // Redirige a la página de edición
+            } else {
+                res.json({
+                    status: "Product not found"
+                });
+            }
+        })
+        .catch(err => res.json({
             status: "Server unavailable"
         }));
 }
